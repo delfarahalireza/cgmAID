@@ -34,32 +34,41 @@ The `meal_detection_algorithm.py` script implements a robust method to detect me
    - Print summary statistics
    - Plot an example of meal detection for a sample participant
 
-## PID Controller
+## Automated Insulin Delivery Controller
 
-The `improved_pid_controller.py` script provides an enhanced PID controller for automated insulin delivery. It includes:
-- Realistic target glucose and PID gains
-- Basal and bolus insulin calculation
-- Safety features (suspend on low glucose, rate limiting, IOB adjustment)
-- Test cases for various glucose scenarios
+The `aid_run.py` script provides a comprehensive automated insulin delivery system with machine learning-based glucose prediction and comprehensive visualizations. It includes:
+- Advanced glucose prediction using Random Forest models
+- Personalized insulin sensitivity and control parameters
+- Realistic insulin action curve modeling
+- Safety features (glucose thresholds, dosing limits, IOB tracking)
+- Real-time glucose state modification based on insulin effects
+- Comprehensive performance analysis and visualization
 
 ### Features
-- Adjustable parameters for target glucose, PID gains, basal rate, and safety limits
-- Handles insulin on board (IOB) to prevent over-delivery
-- Computes meal bolus based on carbohydrate intake and correction factor
-- Rate limiting to avoid rapid changes in insulin delivery
+- **Glucose Prediction**: Machine learning model trained on CGM and food intake data
+- **Personalized Control**: Adaptive parameters based on individual glucose patterns
+- **Safety Systems**: Multiple safety checks including glucose thresholds and maximum dosing limits
+- **Insulin Modeling**: Realistic insulin action curve with peak at 60 minutes and 3-hour duration
+- **Performance Metrics**: Time in range (TIR), hypoglycemia time, hyperglycemia time analysis
+- **Comprehensive Visualizations**: Individual subject traces, summary statistics, performance dashboards
 
 ### Usage
-Run the script to see test outputs for different scenarios:
+Run the script with your CGM and food intake data:
 ```bash
-python improved_pid_controller.py
+python aid_run.py
 ```
 
-The script will print:
-- Insulin rate responses to various glucose levels
-- Effect of insulin on board (IOB)
-- Meal bolus calculations for different meals
-- Rate limiting demonstration
-- Controller parameters summary
+The script will:
+- Load CGM and meal data from `aireadi_cgm_kcal.csv`
+- Train glucose prediction models for each subject
+- Simulate automated insulin delivery with real-time glucose modification
+- Generate comprehensive visualizations including:
+  - Individual subject glucose traces with and without controller
+  - Controller performance summary statistics
+  - Glucose distribution analysis
+  - Performance dashboard with safety metrics
+  - Insulin action curve visualization
+- Save results to CSV and PNG files in the `aireadi/` folder
 
 ## Requirements
 - Python 3.10.18
@@ -67,10 +76,12 @@ The script will print:
 - pandas
 - scipy
 - matplotlib
+- scikit-learn
+- seaborn
 
 Install dependencies with:
 ```bash
-pip install numpy pandas scipy matplotlib
+pip install numpy pandas scipy matplotlib scikit-learn seaborn
 ```
 
 ## Figures
