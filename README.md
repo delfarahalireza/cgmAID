@@ -5,7 +5,8 @@ Automated insulin delivery and meal detection algorithms based on continuous glu
 ## Overview
 This repository provides:
 - A comprehensive algorithm for detecting meal times and estimating calories from CGM data.
-- A PID controller for automated insulin delivery with realistic constraints and safety features.
+- Model predictive control-based AID system Using Random Forest for glucose prediction.
+- Adaptive Personalization based on Baseline time-in-range (TIR), Mean glucose levels and Glucose variability.
 
 ## Meal Detection Algorithm
 
